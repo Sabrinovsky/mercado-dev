@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 const AnuncioHome = ({anuncio}) =>{
     return(
         <div className="col-lg-4 col-md-6 mb-4">
-        {console.log(anuncio)}
             <div className="card h-100">
                 <a href="#"><img className="card-img-top" src={anuncio.foto} alt="" /></a>
                 <div className="card-body">

@@ -8,15 +8,10 @@ import HeaderHome from './HeaderHome'
 class Home extends Component{
     constructor(props){
         super(props)
-    
+
         this.state = {
-          categorias: [],
-          anuncios: []
+            anuncios: []
         }
-        base.bindToState('categorias',{
-            context: this,
-            state:'categorias'
-        })
         base.bindToState('anuncios',{
             context: this,
             state:'anuncios',
@@ -34,20 +29,21 @@ class Home extends Component{
                     <h3>Ultimos anúncios</h3>
                     <div className='row'>
                         {
-                            this.state.anuncios.map((anuncio,indice)=>{
-                        return <AnuncioHome key={indice} anuncio={anuncio}/>
+                            Object.keys(this.state.anuncios).map((key)=>{
+                            const anuncio = this.state.anuncios[key]
+                        return <AnuncioHome key={key} anuncio={anuncio}/>
                         })}
                     </div>
                     <h3>Categorias</h3>
 
                     <div className='row'>
                         {
-                        this.state.categorias.map((cat,key) => {
+                        this.props.categorias.map((cat,key) => {
                             return[
                             <LinkCategoria key={key} categoria={cat} />,
                             ++index%4 === 0 && <div className='w-100'></div>
                             ]
-                        })} 
+                        })}
                     </div>
                 </div>
             </div>
